@@ -41,19 +41,21 @@
 (async () => {
     await loadSlim(tsParticles); // enregistre les fonctionnalités
 
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    console.log(isMobile)
     await tsParticles.load({
     id: "tsparticles",
     options: {
         fpsLimit: 60,
         background: { color: "transparent" },
         particles: {
-            number: { value: 60 },
+            number: { value: isMobile ? 25 : 60 },
             paint: { fill: { color: { value: "#014BAA" }, enable: true }, },
             opacity: { value: 1 },
             size: { value: { min: 2, max: 5 } },
             links: {
                 enable: true,
-                distance: 150,
+                distance: isMobile ? 100 : 150,
                 color: "#014BAA",
                 opacity: 1,
                 width: 3,
