@@ -1,0 +1,25 @@
+music-notes
+
+// sidebar
+house
+list-bullets 
+heart
+disc
+tag
+gear
+info
+
+// player
+play
+shuffle
+skip-back 
+skip-forward
+repeat
+speaker-high
+speaker-simple-x
+
+// lib
+funnel
+squares-four
+pencil-simple
+heart-straight

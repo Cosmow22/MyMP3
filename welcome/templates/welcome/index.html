@@ -1,0 +1,80 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyMP3</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css">
+
+    <link rel="icon"
+          type="image/svg+xml"
+          href="{% static 'images/favicon.svg' %}">
+          
+          <link rel="stylesheet" href="{% static 'css/global.css' %}">
+          <link rel="stylesheet" href="{% static 'welcome/css/welcome.css' %}">
+</head>        
+<body>
+<main>
+    <div id="tsparticles"></div>
+    <h1 class="blue">
+        <i class="ph-fill ph-music-notes"></i>
+        MyMP3
+    </h1>
+    <h2>
+        Your Music,<br>
+        <span class="blue">Your rules</span>
+    </h2>
+    <p>
+        Your very own music library,<br>
+        organize, listen to, and enjoy your music without ads
+    </p>
+    <button>
+        Continue with Google
+    </button>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@tsparticles/engine@4/tsparticles.engine.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tsparticles/slim@4/tsparticles.slim.bundle.min.js"></script>
+<script>
+(async () => {
+    await loadSlim(tsParticles); // enregistre les fonctionnalités
+
+    await tsParticles.load({
+    id: "tsparticles",
+    options: {
+        fpsLimit: 60,
+        background: { color: "transparent" },
+        particles: {
+            number: { value: 60 },
+            paint: { fill: { color: { value: "#014BAA" }, enable: true }, },
+            opacity: { value: 1 },
+            size: { value: { min: 2, max: 5 } },
+            links: {
+                enable: true,
+                distance: 150,
+                color: "#014BAA",
+                opacity: 1,
+                width: 3,
+            },
+            move: {
+                enable: true,
+                speed: 1.2,
+                outModes: { default: "bounce" },
+            },
+            },
+            interactivity: {
+            events: {
+                onHover: { enable: true, mode: "repulse" },
+            },
+            modes: {
+                repulse: { distance: 100 },
+            },
+        },
+    },
+    });
+})();
+</script>
+</body>
+</html>
