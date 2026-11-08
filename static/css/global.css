@@ -16,7 +16,7 @@ body {
     color: var(--color-primary);
 }
 
-button {
+button, .btn {
     background-color: var(--color-primary);
     font-size: 16px;
     margin: 4px 2px;
@@ -26,7 +26,7 @@ button {
     border-radius: 999px;
 }
 
-button:hover {
+button:hover, .btn:hover {
     background-color: var(--color-primary-hover);
 }
 

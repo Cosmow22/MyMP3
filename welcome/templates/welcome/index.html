@@ -1,4 +1,5 @@
 {% load static %}
+{% load socialaccount %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,9 +32,12 @@
         Your very own music library,<br>
         organize, listen to, and enjoy your music without ads
     </p>
-    <button>
-        Continue with Google
-    </button>
+    <a href="{% provider_login_url 'google' next='/home' %}" class="btn">
+        <img src="{% static 'welcome/images/google_icon.svg' %}"
+            width="20"
+            height="20">
+        Continue with Google  
+    </a>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/@tsparticles/engine@4/tsparticles.engine.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tsparticles/slim@4/tsparticles.slim.bundle.min.js"></script>
@@ -42,7 +46,6 @@
     await loadSlim(tsParticles); // enregistre les fonctionnalités
 
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    console.log(isMobile)
     await tsParticles.load({
     id: "tsparticles",
     options: {
@@ -65,16 +68,8 @@
                 speed: 1.2,
                 outModes: { default: "bounce" },
             },
-            },
-            interactivity: {
-            events: {
-                onHover: { enable: true, mode: "repulse" },
-            },
-            modes: {
-                repulse: { distance: 100 },
-            },
+            }
         },
-    },
     });
 })();
 </script>
