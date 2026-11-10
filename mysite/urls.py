@@ -20,8 +20,10 @@ from django.urls import path, include
 
 from welcome.views import welcome
 
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path("welcome/", welcome, name="welcome")
+    path("welcome/", welcome, name="welcome"),
+    path("", include("home.urls")),
 ]
