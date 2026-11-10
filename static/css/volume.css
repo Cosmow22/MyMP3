@@ -1,0 +1,76 @@
+:root {
+  --surface: var(--color-background-secondary);
+  --ink: var(--color-primary);
+  --muted: var(--color-text );
+  --track: var(--color-text);
+  --accent: var(--color-primary-hover);
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* --- Composant --- */
+.volume { position: relative; display: inline-block; }
+
+.volume__btn {
+  width: 56px; height: 56px;
+  display: grid; place-items: center;
+  border: 0; border-radius: 50%;
+  background: var(--surface); color: var(--ink);
+  cursor: pointer;
+}
+.volume__btn:hover { 
+  color: var(--accent); 
+  background-color: var(--color-background-secondary);
+}
+.volume__btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.volume__btn svg { width: 26px; height: 26px; }
+
+.volume__panel {
+  position: absolute; left: 50%; bottom: calc(100% + -15px);
+  width: 56px; padding: 14px 0 12px;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  background: var(--surface); border-radius: 28px;
+  opacity: 0; visibility: hidden;
+  transform: translate(-50%, 8px);
+  transition: opacity .18s ease, transform .18s ease, visibility .18s;
+}
+.volume.is-open .volume__panel {
+  opacity: 1; visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.volume__value { font-size: .8rem; font-variant-numeric: tabular-nums; color: var(--muted); }
+
+/* Slider vertical : 0 en bas, 100 en haut */
+.volume__slider {
+  -webkit-appearance: none; appearance: none;
+  writing-mode: vertical-lr; direction: rtl;
+  width: 28px; height: 150px; margin: 0;
+  background: transparent; cursor: pointer;
+}
+.volume__slider:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 14px; }
+
+.volume__slider::-webkit-slider-runnable-track {
+  width: 6px; border-radius: 3px;
+  background: linear-gradient(to top, var(--ink) var(--v, 50%), var(--track) var(--v, 50%));
+}
+.volume__slider::-moz-range-track {
+  width: 6px; border-radius: 3px;
+  background: linear-gradient(to top, var(--ink) var(--v, 50%), var(--track) var(--v, 50%));
+}
+.volume__slider::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 20px; height: 20px; margin-left: -7px;
+  border-radius: 50%; border: 0;
+  background: var(--accent);
+}
+.volume__slider::-moz-range-thumb {
+  width: 20px; height: 20px;
+  border-radius: 50%; border: 0;
+  background: var(--accent)  ;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .volume__panel { transition: none; }
+}

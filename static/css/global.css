@@ -2,17 +2,32 @@
 
 :root {
     --color-primary: #014BAA;
-    --color-background: #F8F3F0;
     --color-primary-hover: #003B87;
+
+    --color-background: #F8F3F0;
+    --color-background-secondary: #CFD7E4;
+    --color-background-warm: #F2E5D8;
+
     --color-text: #1D2424;
+    --color-text-secondary: #5A5A5A;
+    
+    --color-border: #E8DDD8;
+
+    --radius-sm: 12px;
+    --radius-md: 20px;
+    --radius-lg: 28px;
+
+    --margin: 15px;
 }
 
 body {
-    background-color: var(--color-background);
+    background-color: var(--color-background-warm);
     font-family: "Inter", sans-serif;
+    height: calc(100vh - var(--margin) * 2);
+    margin: var(--margin);
 }
 
-.blue, .ph-fill {
+.blue {
     color: var(--color-primary);
 }
 
@@ -32,4 +47,10 @@ button:hover, .btn:hover {
 
 h1, h2, h3, p {
     color: var(--color-text )
+}
+
+
+hr {
+    color: var(--color-text);
+    width: 100%;
 }

@@ -1,28 +1,234 @@
 body {
-    margin: 0;
+    display: flex;
+    overflow: hidden;
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 i {
+    margin-right: 5px;
 }
 
 nav {
-    width: 250px;
-    background-color: aquamarine;
-}
-
-nav a {
-    display: block;
-}
-
-div {
+    width: 240px;
+    min-width: 240px;
+    padding: 24px 16px;
     display: flex;
-    height: 80vh;
+    flex-direction: column;
+    gap: 12px;
+    background-color: var(--color-background);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    margin-right: var(--margin);
+}
+
+nav a, nav div a {
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 999px;
+    /* color: var(--color-primary);  */
+    color: var(--color-text);
+    font-size: 1.3em;
+    
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav a i {
+    position: absolute;
+    left: 20px;
+    color: var(--color-text);
+    font-size: 24px;
+}
+
+nav a span {
+    text-align: center;
+}
+
+nav a.active {
+    background-color: var(--color-background-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+}
+
+nav a.active span {
+    color: var(--color-primary);
+}
+
+nav a.active i {
+    color: var(--color-primary);
+}
+
+.bottom-links {
+    margin-top: auto;
+}
+
+.profile-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.container {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 main {
-    width: 100%;
-    background-color: violet;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 32px;
+    background-color: var(--color-background);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border); 
+    margin-bottom: var(--margin);
 }
 
-footer {
-    width: 100%;
-    height: 20vh;
-    background-color: pink;
+.left {
+    display: flex;
+    align-items: center;
+    justify-self: start;
+    gap: 16px;
+}
+
+.left h1 {
+    font-size: 1.25em;
+}
+
+.left h2 {
+    font-size: 1em;
+    color: var(--color-text-secondary);
+}
+
+img {
+    width: 80px;
+    height: 80px;
+}
+
+.player {
+    height: 100px;
+    min-height: 100px;
+    padding: 16px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    border-top: 1px solid #282828;
+    background-color: var(--color-background-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+.player-btn {
+    background-color: var(--color-background-secondary);
+    color: var(--color-primary);
+}
+
+.player-btn:hover {
+    background-color: var(--color-background-secondary);
+}
+
+.player-btn i:hover {
+    color: var(--color-primary-hover);
+}
+
+.player-btn i {
+    font-size: 1.5em;
+}
+
+#play-btn {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+
+.ph-play, .ph-pause {
+    color: var(--color-background);
+}
+
+nav h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+}
+
+
+.player-progress {
+    display: flex;
+    align-items: center;
+    gap: 8px;   
+}
+
+
+.player-progress input[type="range"] {
+    appearance: none;
+    width: 500px;
+    height: 5px;
+    background: var(--color-text);
+    border-radius: var(--margin);
+    cursor: pointer;
+}
+
+/* Partie bleue - Firefox */
+.player-progress input[type="range"]::-moz-range-progress {
+    background: var(--color-primary);
+    height: 5px;
+    border-radius: 10px;
+}
+
+.player-progress input[type="range"]:hover::-moz-range-progress {
+    background: var(--color-primary-hover)  ;
+}
+
+/* Curseur */
+.player-progress input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-primary );
+}
+
+.player-progress input[type="range"]::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border: none;
+    border-radius: 50%;
+    background: #014BAA;
+}
+
+.volume {
+    justify-self: end;
+}
+
+.cover {
+    border-radius: var(--radius-sm);
+}
+
+#profile-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+#profile-link i {
+    position: static;
+    margin-left: auto;
 }

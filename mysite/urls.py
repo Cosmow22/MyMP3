@@ -26,4 +26,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path("welcome/", welcome, name="welcome"),
     path("", include("home.urls")),
+    path("", include("library.urls"))
 ]

@@ -5,31 +5,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon"
+          type="image/svg+xml"
+          href="{% static 'images/favicon.svg' %}"
+    >
     <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.11/dist/htmx.min.js" 
     integrity="sha384-2OatzQy1H+Zd/IIrjr1TcuDGqLXeHhbooAyJY1KdQMKnr4LZ22k31GBLdYKHmVjg" 
     crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    >
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/volume.css' %}">
+    <script src="{% static 'js/player.js' %}" defer></script>
+    <script src="{% static 'js/volume_btn.js' %}" defer></script>
     <title>MyMP3</title>
 </head>
 <body>
-    <div>
-        <nav hx-boost="true" hx-target="main">
-            <a href="/home/">Home</a>
-            <a href="/library">Library</a>
-            <a href="/playlists/">Playlists</a>
-            <a href="/albums/">Albums</a>
-            <a href="/artists/">Artists</a>
-            <a href="/genres/">Genres</a>
-        </nav>
+    <nav hx-boost="true" hx-target="main">
+        <h1 class="blue">
+            <i class="ph-fill ph-music-notes"></i>
+            MyMP3
+        </h1>
+        
+        <a href="/home/" onclick="setActive(this)" class="{% if active_page == 'home' %}active{% endif %}">
+            <i class="ph-fill ph-house"></i>
+          <span>Home</span>
+        </a>
+        <a href="/library" onclick="setActive(this)" class="{% if active_page == 'library' %}active{% endif %}">
+            <i class="ph-fill ph-book-bookmark"></i>
+            <span>Library</span>
+        <a href="/playlists/" onclick="setActive(this)" class="{% if active_page == 'playlists' %}active{% endif %}">
+            <i class="ph-fill ph-playlist"></i>
+            <span>Playlists</span>
+        </a>
+        </a>
+        <a href="/liked" onclick="setActive(this)" class="{% if active_page == 'liked' %}active{% endif %}">
+            <i class="ph-fill ph-heart"></i>
+            <span>Liked Songs</span>
+        </a>
+        <hr>
+        <a href="/albums/" onclick="setActive(this)" class="{% if active_page == 'albums' %}active{% endif %}">
+            <i class="ph-fill ph-disc"></i>
+            <span>Albums</span>
+        </a>
+        <a href="/artists/" onclick="setActive(this)" class="{% if active_page == 'artists' %}active{% endif %}">
+            <i class="ph-fill ph-users"></i>
+            <span>Artists</span>
+        </a>
+        <a href="/genres/" onclick="setActive(this)" class="{% if active_page == 'genres' %}active{% endif %}">
+            <i class="ph-fill ph-tag"></i>
+            <span>Genres</span>
+        </a>
+        <div class="bottom-links">
+            <a href="/settings/" onclick="setActive(this)" class="{% if active_page == 'settings' %}active{% endif %}">
+                <i class="ph-fill ph-gear"></i>
+                Settings
+            </a>
 
+            <a href="/profile/" id="profile-link">
+                <img src="{% static 'images/user.png' %}" alt="Profile Picture" class="profile-picture">
+                <div>Profile</div>
+                <i class="ph-bold ph-caret-right"></i>  
+            </a>    
+        </div>
+            
+    </nav>
+    <div class="container">
         <main>{% block content %}{% endblock %}</main>
-    </div>
+        <div class="player" hx-boost="false">
+            <audio id="audio-player" src="{% static 'music/my_song.mp3' %}"></audio>
+            <div class="left">
+                <img src="{% static 'images/my_song_cover.jpeg' %}" alt="My Song Cover" class="cover">
+                <div>
+                    <h1>My Song</h1>
+                    <h2>Labi Siffre</h2>
+                </div>
+            </div>
+            <div class="center">
+                <div>
+                    <button class="player-btn">
+                        <i class="ph-fill ph-shuffle"></i>
+                    </button>
+                    <button class="player-btn">
+                        <i class="ph-fill ph-skip-back"></i>
+                    </button>
+                    <button id="play-btn">
+                        <i class="ph-fill ph-play"></i> 
+                    </button>
+                    <button class="player-btn">
+                        <i class="ph-fill ph-skip-forward"></i>
+                    </button>
+                    <button class="player-btn">
+                        <i class="ph-fill ph-repeat"></i>
+                    </button>    
+                </div>
+                <div class="player-progress">
+                    <span id="current-time">0:00</span>
+                        <input
+                            type="range"
+                            id="progress"
+                            min="0"
+                            max="100"
+                            value="0"
+                            step="0.1"
+                        >
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            <div class="volume" id="volume">
+                <div class="volume__panel" id="volume-panel">
+                    <span class="volume__value" id="volume-value" aria-hidden="true">50</span>
+                    <input class="volume__slider" id="volume-slider" type="range"
+                        min="0" max="100" value="50" aria-label="Volume">
+                </div>
 
-    <footer hx-boost="false">
-        Audio Player
-        <audio id="audio-player"></audio>
-    </footer>
+                <button class="volume__btn" id="volume-btn" type="button"
+                        aria-label="Régler le volume" aria-expanded="false" aria-controls="volume-panel">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M11 5 6 9H2v6h4l5 4V5z" fill="currentColor"/>
+                    <path id="wave-1" d="M15.5 8.5a5 5 0 0 1 0 7"/>
+                    <path id="wave-2" d="M18.5 5.5a9 9 0 0 1 0 13"/>
+                    <path id="mute" d="m16 9 6 6m0-6-6 6" style="display:none"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>   
+<script>
+function setActive(element) {
+    document.querySelectorAll('nav a').forEach(link => {
+        link.classList.remove('active');
+    });
 
+    element.classList.add('active');
+}
+</script>
 </body>
 </body>
 </html>

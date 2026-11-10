@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     
     "welcome",
     "home",
+    "library",
 ]
 
 SITE_ID = 2
