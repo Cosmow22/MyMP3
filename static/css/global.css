@@ -11,6 +11,9 @@
     --color-text: #1D2424;
     --color-text-secondary: #5A5A5A;
     
+    --color-danger: #D93025;
+    --color-danger-hover: #B3261E;
+    
     --color-border: #E8DDD8;
 
     --radius-sm: 12px;
@@ -34,8 +37,7 @@ body {
 button, .btn {
     background-color: var(--color-primary);
     font-size: 16px;
-    margin: 4px 2px;
-    padding: 10px;
+    padding: 15px 20px;
     border: none;
     color: var(--color-background);
     border-radius: 999px;
@@ -43,6 +45,17 @@ button, .btn {
 
 button:hover, .btn:hover {
     background-color: var(--color-primary-hover);
+}
+
+.btn-danger {
+    background-color: var(--color-danger);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-danger:hover {
+    background-color: var(--color-danger-hover);
 }
 
 h1, h2, h3, p {

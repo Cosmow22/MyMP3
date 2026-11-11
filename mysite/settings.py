@@ -47,10 +47,13 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+
+    'django_user_agents',
     
     "welcome",
     "home",
     "library",
+    "settings",
 ]
 
 SITE_ID = 2
@@ -67,6 +70,8 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'allauth.account.middleware.AccountMiddleware',
+
+    'django_user_agents.middleware.UserAgentMiddleware',    
 ]
 
 ROOT_URLCONF = "mysite.urls"
@@ -165,3 +170,10 @@ SOCIALACCOUNT_PROVIDERS = {
 
 SOCIALACCOUNT_LOGIN_ON_GET = True
 LOGIN_REDIRECT_URL = "/home"
+
+
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "10.170.119.9",
+]

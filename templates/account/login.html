@@ -1,0 +1,17 @@
+{% load static %}
+{% load socialaccount %}
+
+<h1 class="blue">Login</h1>
+
+<h2>
+    Oops..<br>
+    <span class="blue">You must log in to access this page</span>
+</h2>
+
+<a href="{% provider_login_url 'google' next=next %}" class="btn">
+    <img src="{% static 'welcome/images/google_icon.svg' %}"
+        width="20"
+        height="20"
+        alt="Google">
+    Continue with Google
+</a>

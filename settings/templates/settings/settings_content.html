@@ -1,0 +1,16 @@
+<h1>Hi from settings</h1>
+<form method="post" action="{% url 'account_logout' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
+
+
+<form method="POST" action="{% url 'delete_account' %}">
+
+    {% csrf_token %}
+
+    <button type="submit" class="btn-danger">
+        <i class="ph-bold ph-trash"></i>
+        Delete My Account
+    </button>
+</form>

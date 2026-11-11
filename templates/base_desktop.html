@@ -28,8 +28,10 @@
       href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css"
     />
     <link rel="stylesheet" href="{% static 'css/global.css' %}">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base_desktop.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <link rel="stylesheet" href="{% static 'css/volume.css' %}">
+    <script src="{% static 'js/navigation.js' %}" defer></script>   
     <script src="{% static 'js/player.js' %}" defer></script>
     <script src="{% static 'js/volume_btn.js' %}" defer></script>
     <title>MyMP3</title>
@@ -146,15 +148,6 @@
             </div>
         </div>
     </div>   
-<script>
-function setActive(element) {
-    document.querySelectorAll('nav a').forEach(link => {
-        link.classList.remove('active');
-    });
-
-    element.classList.add('active');
-}
-</script>
 </body>
 </body>
 </html>
