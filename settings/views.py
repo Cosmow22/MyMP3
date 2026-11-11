@@ -3,17 +3,6 @@ from django.shortcuts import redirect, render
 
 
 def settings(request):
-    """
-    if request.headers.get("HX-Request"):
-        print(request.user.is_authenticated)
-        if not request.user.is_authenticated:
-            return render(request, "account/login.html", {
-                    "next": "settings/"
-                    })
-        return render(request, "settings/settings_content.html")
-    return render(request, "settings/settings.html")
-    """
-
     if not request.user.is_authenticated:
         if request.headers.get("HX-Request"):
             return render(request, "account/login.html", {
