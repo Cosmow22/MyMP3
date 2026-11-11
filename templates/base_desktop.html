@@ -79,7 +79,18 @@
             </a>
 
             <a href="/profile/" id="profile-link">
-                <img src="{% static 'images/user.png' %}" alt="Profile Picture" class="profile-picture">
+                <!--<img src="{% static 'images/user.png' %}" alt="Profile Picture" class="profile-picture">-->
+                {% if user.is_authenticated %}
+                    {% with account=user.socialaccount_set.first %}
+                        {% if account and account.get_avatar_url %}
+                            <img src="{{ account.get_avatar_url }}" alt="Profile" class="profile-picture">
+                        {% else %}
+                            <img src="{% static 'images/user.png' %}" alt="Profile" class="profile-picture">
+                        {% endif %}
+                    {% endwith %}
+                {% else %}
+                    <img src="{% static 'images/user.png' %}" alt="Profile" class="profile-picture">
+                {% endif %}               
                 <div>Profile</div>
                 <i class="ph-bold ph-caret-right"></i>  
             </a>    
