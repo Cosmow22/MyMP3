@@ -112,6 +112,7 @@ main {
 .cover {
     width: 80px;
     height: 80px;
+    border-radius: var(--radius-sm);
 }
 
 .player {
@@ -213,10 +214,6 @@ nav h1 {
 
 .volume {
     justify-self: end;
-}
-
-.cover {
-    border-radius: var(--radius-sm);
 }
 
 #profile-link {

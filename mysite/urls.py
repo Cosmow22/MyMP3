@@ -28,6 +28,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path("welcome/", welcome, name="welcome"),
+    path("", include("music.urls")),
     path("", include("home.urls")),
     path("", include("library.urls")),
     path("", include("settings.urls")),

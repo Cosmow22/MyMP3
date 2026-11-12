@@ -1,4 +1,28 @@
-<h1>Library</h1>
+{% load static %}
+
+<head hx-head="merge">
+    <link rel="stylesheet" href="{% static 'library/css/desktop.css' %}">
+</head>
+
+<div class="navbar-head">
+    <h1>Library</h1>
+    <div class="navbar-actions">
+        <div class="search-bar">
+            <i class="ph-bold ph-magnifying-glass"></i>
+            <input type="text" placeholder="Search..">
+        </div>
+        <a 
+        href="{% url 'add_music' %}"
+        hx-get="{% url 'add_music' %}"
+        class="add-btn btn"
+        hx-target="main"
+        hx-swap="innerHTML"
+        hx-push-url="true">
+            <i class="ph-bold ph-plus"></i>
+        Add music
+        </a>
+    </div> 
+</div>
 <table>
         <thead>
             <tr>
@@ -22,7 +46,7 @@
                 </td>
                 <td>
                     <div id="title-cell">
-                        <img src="{{ music.cover.url }}" alt="{{ music.title }}" class="cover">
+                        <img src="{{ music.cover.url }}" alt="{{ music.title }}" class="row-cover">
                         <div id="track-info">
                             <p>{{ music.title }}</p>
                             <p id="artist">{{ music.artist}}</p>

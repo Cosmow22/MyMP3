@@ -67,3 +67,7 @@ hr {
     color: var(--color-text);
     width: 100%;
 }
+
+a {
+    text-decoration-line: none;
+}

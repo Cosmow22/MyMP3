@@ -1,10 +1,9 @@
-a {
-    text-decoration-line: none;
+#login-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;  
 }
 
-a img {
+#login-link img {
     margin-right: 5px;
 }
