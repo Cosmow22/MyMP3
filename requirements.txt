@@ -8,6 +8,7 @@ django-allauth==65.21.1
 django-user-agents==0.4.0
 idna==3.20
 oauthlib==4.0.1
+pillow==13.0.0
 psycopg==3.3.8
 psycopg-binary==3.3.8
 pycparser==3.12

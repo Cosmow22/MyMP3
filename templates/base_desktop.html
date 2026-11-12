@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="{% static 'css/base_desktop.css' %}">
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <link rel="stylesheet" href="{% static 'css/volume.css' %}">
+    {% block extra_css %}{% endblock %}
     <script src="{% static 'js/navigation.js' %}" defer></script>   
     <script src="{% static 'js/player.js' %}" defer></script>
     <script src="{% static 'js/volume_btn.js' %}" defer></script>

@@ -1,4 +1,51 @@
 <h1>Library</h1>
+<table>
+        <thead>
+            <tr>
+                <th class="counter-column">#</th>
+                <th>Title</th>
+                <th>Album</th>
+                <th>Date added</th>
+                <th>Duration</th>
+                <th>Genre</th>
+                <th class="settings-column"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for music in musics %}
+            <tr>
+                <td class="counter">
+                    <span class="track-number">{{ forloop.counter }}</span>
+                    <button class="play-button">
+                        <i id="play-button-icon" class="ph-fill ph-play"></i>
+                    </button>
+                </td>
+                <td>
+                    <div id="title-cell">
+                        <img src="{{ music.cover.url }}" alt="{{ music.title }}" class="cover">
+                        <div id="track-info">
+                            <p>{{ music.title }}</p>
+                            <p id="artist">{{ music.artist}}</p>
+                        </div>
+                    </div>
+                </td>
+                <td>{{ music.album }}</td>
+                <td>{{ music.created_at }}</td>
+                <td>{{ music.formatted_duration }}</td>
+                <td>
+                    {% for genre in music.genres.all %}
+                        <span>{{ genre.name }}</span>{% if not forloop.last %},{% endif %}
+                    {% empty %}
+                        <span>No genre</span>
+                    {% endfor %}
+                </td>
+                <td class="settings-cell">
+                    <button class="settings-button">
+                        <i class="ph-bold ph-dots-three"></i>
+                    </button>
+                </td>
+        </tr>
+        {% endfor %}
 
-<p>Explore your music collection.</p>
-<p>Your are on a comuter</p>
+    </tbody>
+</table>

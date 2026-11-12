@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django_user_agents',
     
     "welcome",
+    "music",
     "home",
     "library",
     "settings",
@@ -177,3 +178,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "10.170.119.9",
 ]
+
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
